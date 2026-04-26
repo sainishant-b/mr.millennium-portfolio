@@ -1,5 +1,7 @@
+import { useState, useEffect } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { GridScanBackground } from "../components/GridScanBackground";
+import TetrisLoading from "../components/ui/tetris-loader";
 import djPortrait from "../assets/dj-ascii-art.png";
 import photo1 from "../assets/photo1.jpg";
 import photo2 from "../assets/photo2.jpg";
@@ -34,7 +36,26 @@ const gallery = [
 ];
 
 function Index() {
+  const [fading, setFading] = useState(false);
+  const [gone, setGone] = useState(false);
+
+  useEffect(() => {
+    const fadeTimer = setTimeout(() => setFading(true), 2800);
+    const hideTimer = setTimeout(() => setGone(true), 3300);
+    return () => { clearTimeout(fadeTimer); clearTimeout(hideTimer); };
+  }, []);
+
   return (
+    <>
+      {!gone && (
+        <div
+          className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-background transition-opacity duration-500 ${fading ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+        >
+          <p className="mb-6 font-display text-[0.6rem] text-muted-foreground tracking-widest">LOADING SIGNAL...</p>
+          <TetrisLoading size="lg" speed="fast" showLoadingText={false} />
+          <p className="mt-6 font-display text-[0.55rem] text-accent animate-pulse">MR. MILLENNIUM</p>
+        </div>
+      )}
     <main className="scanline-mask relative min-h-screen overflow-hidden bg-background text-foreground">
       <GridScanBackground />
       <nav className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-5 sm:px-8">
@@ -75,11 +96,6 @@ function Index() {
             </Link>
           </div>
 
-          <div className="sound-bars flex h-16 items-end gap-2" aria-hidden="true">
-            {[1, 2, 3, 4, 5].map((bar) => (
-              <span key={bar} className="block h-14 w-5 bg-accent" />
-            ))}
-          </div>
         </div>
 
         <div className="pixel-panel relative mx-auto w-full max-w-md overflow-hidden p-3">
@@ -131,5 +147,6 @@ function Index() {
         </div>
       </section>
     </main>
+    </>
   );
 }
