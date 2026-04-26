@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
+import { GridScanBackground } from "../components/GridScanBackground";
 import djPortrait from "../assets/dj-ascii-art.png";
 
 export const Route = createFileRoute("/")({
@@ -23,8 +24,9 @@ const gallery = ["LIVE SET", "NIGHT DRIVE", "WAREHOUSE", "AFTERHOURS"];
 
 function Index() {
   return (
-    <main className="scanline-mask min-h-screen bg-background text-foreground">
-      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-5 sm:px-8">
+    <main className="scanline-mask relative min-h-screen overflow-hidden bg-background text-foreground">
+      <GridScanBackground />
+      <nav className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-5 sm:px-8">
         <Link to="/" className="font-display text-xs text-accent sm:text-sm">
           MR.MILLENNIUM
         </Link>
@@ -38,7 +40,7 @@ function Index() {
         </div>
       </nav>
 
-      <section className="mx-auto grid min-h-[calc(100vh-5rem)] w-full max-w-6xl items-center gap-10 px-5 pb-16 pt-4 sm:px-8 lg:grid-cols-[1fr_0.82fr]">
+      <section className="relative z-10 mx-auto grid min-h-[calc(100vh-5rem)] w-full max-w-6xl items-center gap-10 px-5 pb-16 pt-4 sm:px-8 lg:grid-cols-[1fr_0.82fr]">
         <div className="space-y-8">
           <div className="inline-flex border border-border bg-muted px-3 py-2 font-display text-[0.58rem] text-muted-foreground">
             SIGNAL LIVE // PRESS PLAY
@@ -81,7 +83,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto grid w-full max-w-6xl gap-5 px-5 pb-20 sm:px-8 md:grid-cols-4">
+      <section className="relative z-10 mx-auto grid w-full max-w-6xl gap-5 px-5 pb-20 sm:px-8 md:grid-cols-4">
         {gallery.map((item, index) => (
           <div key={item} className="pixel-panel min-h-40 p-4 transition hover:-translate-y-1 hover:shadow-red">
             <div className="mb-8 flex justify-between font-display text-[0.55rem] text-accent">

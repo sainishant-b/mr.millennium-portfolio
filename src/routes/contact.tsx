@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
+import { GridScanBackground } from "../components/GridScanBackground";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -14,8 +15,9 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   return (
-    <main className="scanline-mask min-h-screen bg-background px-5 py-6 text-foreground sm:px-8">
-      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between py-2">
+    <main className="scanline-mask relative min-h-screen overflow-hidden bg-background px-5 py-6 text-foreground sm:px-8">
+      <GridScanBackground />
+      <nav className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between py-2">
         <Link to="/" className="font-display text-xs text-accent">
           MR.MILLENNIUM
         </Link>
@@ -24,7 +26,7 @@ function ContactPage() {
         </Link>
       </nav>
 
-      <section className="mx-auto grid w-full max-w-6xl gap-10 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <section className="relative z-10 mx-auto grid w-full max-w-6xl gap-10 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
           <p className="mb-5 font-display text-[0.65rem] text-accent">BOOKING LINE OPEN</p>
           <h1 className="pixel-title text-4xl leading-[1.3] sm:text-6xl">MR. MILLENNIUM / BOOKINGS</h1>

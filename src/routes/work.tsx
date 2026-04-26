@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
+import { GridScanBackground } from "../components/GridScanBackground";
 
 export const Route = createFileRoute("/work")({
   head: () => ({
@@ -20,8 +21,9 @@ const projects = [
 
 function WorkPage() {
   return (
-    <main className="scanline-mask min-h-screen bg-background px-5 py-6 text-foreground sm:px-8">
-      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between py-2">
+    <main className="scanline-mask relative min-h-screen overflow-hidden bg-background px-5 py-6 text-foreground sm:px-8">
+      <GridScanBackground />
+      <nav className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between py-2">
         <Link to="/" className="font-display text-xs text-accent">
           MR.MILLENNIUM
         </Link>
@@ -30,7 +32,7 @@ function WorkPage() {
         </Link>
       </nav>
 
-      <section className="mx-auto w-full max-w-6xl py-16">
+      <section className="relative z-10 mx-auto w-full max-w-6xl py-16">
         <p className="mb-5 font-display text-[0.65rem] text-accent">SELECT SET</p>
         <h1 className="pixel-title max-w-4xl text-4xl leading-[1.3] sm:text-6xl">MR. MILLENNIUM / MIXES / VISUALS</h1>
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
