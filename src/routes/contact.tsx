@@ -13,6 +13,8 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
+const instagramUrl = "https://www.instagram.com/faceofmillennium?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==";
+
 function ContactPage() {
   return (
     <main className="scanline-mask relative min-h-screen overflow-hidden bg-background px-5 py-6 text-foreground sm:px-8">
@@ -40,10 +42,18 @@ function ContactPage() {
             <a className="pixel-button w-full px-6 py-5" href="mailto:booking@mrmillennium.com">
               booking@mrmillennium.com
             </a>
-            <a className="pixel-button secondary w-full px-6 py-5" href="https://open.spotify.com" target="_blank" rel="noreferrer">
-              Spotify
-            </a>
-            <a className="pixel-button secondary w-full px-6 py-5" href="https://instagram.com" target="_blank" rel="noreferrer">
+            <iframe
+              title="Mr. Millennium Spotify artist embed"
+              className="h-[352px] w-full rounded-md"
+              src="https://open.spotify.com/embed/artist/6KB8jy3ACCfQn1BOR90Stq?utm_source=generator&theme=0"
+              width="100%"
+              height="352"
+              frameBorder="0"
+              allowFullScreen
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            />
+            <a className="pixel-button secondary w-full px-6 py-5" href={instagramUrl} target="_blank" rel="noreferrer">
               Instagram
             </a>
           </div>
