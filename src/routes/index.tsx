@@ -1,6 +1,11 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { GridScanBackground } from "../components/GridScanBackground";
 import djPortrait from "../assets/dj-ascii-art.png";
+import photo1 from "../assets/photo1.jpg";
+import photo2 from "../assets/photo2.jpg";
+import photo3 from "../assets/photo3.jpg";
+import photo4 from "../assets/photo4.jpg";
+import photo5 from "../assets/photo5.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -20,7 +25,13 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const gallery = ["LIVE SET", "NIGHT DRIVE", "WAREHOUSE", "AFTERHOURS"];
+const gallery = [
+  { label: "LIVE SET", photo: photo1 },
+  { label: "NIGHT DRIVE", photo: photo2 },
+  { label: "WAREHOUSE", photo: photo3 },
+  { label: "AFTERHOURS", photo: photo4 },
+  { label: "CROWD", photo: photo5 },
+];
 
 function Index() {
   return (
@@ -83,24 +94,41 @@ function Index() {
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto grid w-full max-w-6xl gap-5 px-5 pb-20 sm:px-8 md:grid-cols-4">
-        {gallery.map((item, index) => (
-          <div key={item} className="pixel-panel min-h-40 p-4 transition hover:-translate-y-1 hover:shadow-red">
-            <div className="mb-8 flex justify-between font-display text-[0.55rem] text-accent">
-              <span>0{index + 1}</span>
-              <span>PHOTO SLOT</span>
-            </div>
-            <div className="grid h-20 grid-cols-5 gap-1">
-              {Array.from({ length: 20 }).map((_, pixel) => (
-                <span
-                  key={pixel}
-                  className={pixel % (index + 2) === 0 ? "bg-accent" : "bg-pixel-soft/40"}
+      <section className="relative z-10 w-full pb-0">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-1">
+          {gallery.slice(0, 3).map(({ label, photo }, index) => (
+            <div key={label} className="pixel-panel overflow-hidden p-0 group cursor-pointer">
+              <div className="relative h-[60vh] lg:h-[80vh]">
+                <img
+                  src={photo}
+                  alt={label}
+                  className="w-full h-full object-cover grayscale-[15%] contrast-110 transition-transform duration-500 group-hover:scale-105"
                 />
-              ))}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent px-5 py-4 flex justify-between items-end">
+                  <span className="font-display text-xs text-accent">0{index + 1}</span>
+                  <span className="font-display text-xs">{label}</span>
+                </div>
+              </div>
             </div>
-            <p className="mt-4 font-display text-[0.58rem]">{item}</p>
-          </div>
-        ))}
+          ))}
+        </div>
+        <div className="grid grid-cols-2 gap-1 mt-1">
+          {gallery.slice(3).map(({ label, photo }, index) => (
+            <div key={label} className="pixel-panel overflow-hidden p-0 group cursor-pointer">
+              <div className="relative h-[60vh] lg:h-[80vh]">
+                <img
+                  src={photo}
+                  alt={label}
+                  className="w-full h-full object-cover grayscale-[15%] contrast-110 transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent px-5 py-4 flex justify-between items-end">
+                  <span className="font-display text-xs text-accent">0{index + 4}</span>
+                  <span className="font-display text-xs">{label}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
     </main>
   );
