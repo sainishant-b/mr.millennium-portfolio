@@ -4,29 +4,29 @@ import djPortrait from "../assets/dj-ascii-art.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "8-Bit DJ Portfolio" },
+      { title: "Mr. Millennium Portfolio" },
       {
         name: "description",
-        content: "Retro 8-bit DJ portfolio with mixes, live visuals, Spotify, Instagram, and contact details.",
+        content: "Mr. Millennium DJ portfolio with mixes, live visuals, Spotify, Instagram, and contact details.",
       },
-      { property: "og:title", content: "8-Bit DJ Portfolio" },
+      { property: "og:title", content: "Mr. Millennium Portfolio" },
       {
         property: "og:description",
-        content: "A pixel-powered portfolio for a DJ blending arcade nostalgia with heavy club energy.",
+        content: "A pixel-powered portfolio for Mr. Millennium blending retro visuals with heavy club energy.",
       },
     ],
   }),
   component: Index,
 });
 
-const gallery = ["LIVE SET", "NIGHT DRIVE", "WAREHOUSE", "CHIP BREAK"];
+const gallery = ["LIVE SET", "NIGHT DRIVE", "WAREHOUSE", "AFTERHOURS"];
 
 function Index() {
   return (
     <main className="scanline-mask min-h-screen bg-background text-foreground">
       <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-5 sm:px-8">
         <Link to="/" className="font-display text-xs text-accent sm:text-sm">
-          DJ_8BIT.EXE
+          MR.MILLENNIUM
         </Link>
         <div className="flex items-center gap-3 font-display text-[0.62rem] sm:gap-5 sm:text-xs">
           <Link to="/work" className="transition hover:text-accent">
@@ -41,16 +41,15 @@ function Index() {
       <section className="mx-auto grid min-h-[calc(100vh-5rem)] w-full max-w-6xl items-center gap-10 px-5 pb-16 pt-4 sm:px-8 lg:grid-cols-[1fr_0.82fr]">
         <div className="space-y-8">
           <div className="inline-flex border border-border bg-muted px-3 py-2 font-display text-[0.58rem] text-muted-foreground">
-            INSERT COIN // PRESS PLAY
+            SIGNAL LIVE // PRESS PLAY
           </div>
           <div className="space-y-5">
             <h1 className="pixel-title max-w-4xl text-4xl leading-[1.25] sm:text-6xl lg:text-7xl">
-              DJ
-              <br /> PIXEL
-              <br /> VOLT
+              MR.
+              <br /> MILLENNIUM
             </h1>
             <p className="max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
-              Bass-heavy club sets, glitch visuals, and arcade-damaged edits built for sweaty late-night rooms.
+              Bass-heavy club sets, glitch visuals, and future-retro edits built for sweaty late-night rooms.
             </p>
           </div>
 
@@ -59,7 +58,7 @@ function Index() {
               View Work
             </Link>
             <Link to="/contact" className="pixel-button secondary px-6 py-4">
-              Book DJ
+              Book Mr. Millennium
             </Link>
           </div>
 
@@ -77,7 +76,7 @@ function Index() {
             className="aspect-[3/4] w-full object-cover grayscale-[20%] contrast-125"
           />
           <div className="absolute left-6 top-6 bg-accent px-3 py-2 font-display text-[0.55rem] text-accent-foreground">
-            SIGNAL FOUND
+            MR. MILLENNIUM
           </div>
         </div>
       </section>
@@ -87,7 +86,7 @@ function Index() {
           <div key={item} className="pixel-panel min-h-40 p-4 transition hover:-translate-y-1 hover:shadow-red">
             <div className="mb-8 flex justify-between font-display text-[0.55rem] text-accent">
               <span>0{index + 1}</span>
-              <span>IMG SLOT</span>
+              <span>PHOTO SLOT</span>
             </div>
             <div className="grid h-20 grid-cols-5 gap-1">
               {Array.from({ length: 20 }).map((_, pixel) => (
