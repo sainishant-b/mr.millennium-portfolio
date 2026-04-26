@@ -20,6 +20,7 @@ const projects = [
 ];
 
 const instagramUrl = "https://www.instagram.com/faceofmillennium?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==";
+const spotifyUrl = "https://open.spotify.com/artist/6KB8jy3ACCfQn1BOR90Stq";
 
 function WorkPage() {
   return (
@@ -47,20 +48,10 @@ function WorkPage() {
           ))}
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
-          <div className="pixel-panel overflow-hidden p-3">
-            <iframe
-              title="Mr. Millennium Spotify artist embed"
-              className="h-[352px] w-full rounded-md"
-              src="https://open.spotify.com/embed/artist/6KB8jy3ACCfQn1BOR90Stq?utm_source=generator&theme=0"
-              width="100%"
-              height="352"
-              frameBorder="0"
-              allowFullScreen
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-            />
-          </div>
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
+          <a className="pixel-button px-6 py-5" href={spotifyUrl} target="_blank" rel="noreferrer">
+            Spotify
+          </a>
           <a className="pixel-button secondary px-6 py-5" href={instagramUrl} target="_blank" rel="noreferrer">
             Instagram
           </a>
