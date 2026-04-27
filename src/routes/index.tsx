@@ -58,7 +58,7 @@ function Index() {
       )}
     <main className="scanline-mask relative min-h-screen overflow-hidden bg-background text-foreground">
       <GridScanBackground />
-      <nav className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-5 sm:px-8">
+      <nav className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-8 sm:py-5">
         <Link to="/" className="font-display text-xs text-accent sm:text-sm">
           MR.MILLENNIUM
         </Link>
@@ -72,17 +72,17 @@ function Index() {
         </div>
       </nav>
 
-      <section className="relative z-10 mx-auto grid min-h-[calc(100vh-5rem)] w-full max-w-6xl items-center gap-10 px-5 pb-16 pt-4 sm:px-8 lg:grid-cols-[1fr_0.82fr]">
-        <div className="space-y-8">
+      <section className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-8 px-4 pb-12 pt-4 sm:min-h-[calc(100vh-5rem)] sm:px-8 sm:pb-16 lg:grid-cols-[1fr_0.82fr]">
+        <div className="space-y-6 sm:space-y-8">
           <div className="inline-flex border border-border bg-muted px-3 py-2 font-display text-[0.58rem] text-muted-foreground">
             SIGNAL LIVE // PRESS PLAY
           </div>
           <div className="space-y-5">
-            <h1 className="pixel-title max-w-4xl text-4xl leading-[1.25] sm:text-6xl lg:text-7xl">
+            <h1 className="pixel-title max-w-4xl text-[2rem] leading-[1.32] sm:text-6xl lg:text-7xl">
               MR.
               <br /> MILLENNIUM
             </h1>
-            <p className="max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
+            <p className="max-w-2xl text-[0.95rem] leading-7 text-muted-foreground sm:text-lg sm:leading-8">
               Bass-heavy club sets, glitch visuals, and future-retro edits built for sweaty late-night rooms.
             </p>
           </div>
@@ -98,23 +98,23 @@ function Index() {
 
         </div>
 
-        <div className="pixel-panel relative mx-auto w-full max-w-md overflow-hidden p-3">
+        <div className="pixel-panel relative mx-auto w-full max-w-[19rem] overflow-hidden p-2 sm:max-w-md sm:p-3">
           <img
             src={djPortrait}
             alt="Purple 8-bit styled DJ portrait"
-            className="aspect-[3/4] w-full object-cover grayscale-[20%] contrast-125"
+            className="aspect-[4/5] w-full object-cover grayscale-[20%] contrast-125 sm:aspect-[3/4]"
           />
-          <div className="absolute left-6 top-6 bg-accent px-3 py-2 font-display text-[0.55rem] text-accent-foreground">
+          <div className="absolute left-4 top-4 bg-accent px-2 py-1.5 font-display text-[0.48rem] text-accent-foreground sm:left-6 sm:top-6 sm:px-3 sm:py-2 sm:text-[0.55rem]">
             MR. MILLENNIUM
           </div>
         </div>
       </section>
 
       <section className="relative z-10 w-full pb-0">
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-1">
+        <div className="grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-3">
           {gallery.slice(0, 3).map(({ label, photo }, index) => (
             <div key={label} className="pixel-panel overflow-hidden p-0 group cursor-pointer">
-              <div className="relative h-[60vh] lg:h-[80vh]">
+              <div className="relative h-[62vh] min-h-[24rem] lg:h-[80vh]">
                 <img
                   src={photo}
                   alt={label}
@@ -128,10 +128,10 @@ function Index() {
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-2 gap-1 mt-1">
+        <div className="mt-1 grid grid-cols-1 gap-1 sm:grid-cols-2">
           {gallery.slice(3).map(({ label, photo }, index) => (
             <div key={label} className="pixel-panel overflow-hidden p-0 group cursor-pointer">
-              <div className="relative h-[60vh] lg:h-[80vh]">
+              <div className="relative h-[62vh] min-h-[24rem] lg:h-[80vh]">
                 <img
                   src={photo}
                   alt={label}

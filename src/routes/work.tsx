@@ -24,7 +24,7 @@ const spotifyUrl = "https://open.spotify.com/artist/6KB8jy3ACCfQn1BOR90Stq";
 
 function WorkPage() {
   return (
-    <main className="scanline-mask relative min-h-screen overflow-hidden bg-background px-5 py-6 text-foreground sm:px-8">
+    <main className="scanline-mask relative min-h-screen overflow-hidden bg-background px-4 py-5 text-foreground sm:px-8 sm:py-6">
       <GridScanBackground />
       <nav className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between py-2">
         <Link to="/" className="font-display text-xs text-accent">
@@ -35,20 +35,20 @@ function WorkPage() {
         </Link>
       </nav>
 
-      <section className="relative z-10 mx-auto w-full max-w-6xl py-16">
+      <section className="relative z-10 mx-auto w-full max-w-6xl py-12 sm:py-16">
         <p className="mb-5 font-display text-[0.65rem] text-accent">SELECT SET</p>
-        <h1 className="pixel-title max-w-4xl text-4xl leading-[1.3] sm:text-6xl">MR. MILLENNIUM / MIXES / VISUALS</h1>
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <h1 className="pixel-title max-w-4xl text-[1.75rem] leading-[1.45] sm:text-6xl sm:leading-[1.3]">MR. MILLENNIUM / MIXES / VISUALS</h1>
+        <div className="mt-9 grid gap-5 sm:mt-12 lg:grid-cols-3">
           {projects.map((project) => (
-            <article key={project.title} className="pixel-panel p-6 transition hover:-translate-y-1 hover:shadow-red">
+            <article key={project.title} className="pixel-panel p-5 transition hover:-translate-y-1 hover:shadow-red sm:p-6">
               <p className="font-display text-[0.58rem] text-accent">{project.tag}</p>
-              <h2 className="mt-5 font-display text-lg leading-8">{project.title}</h2>
-              <p className="mt-4 leading-7 text-muted-foreground">{project.detail}</p>
+              <h2 className="mt-5 font-display text-base leading-8 sm:text-lg">{project.title}</h2>
+              <p className="mt-4 text-[0.95rem] leading-7 text-muted-foreground sm:text-base">{project.detail}</p>
             </article>
           ))}
         </div>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
+        <div className="mt-10 grid gap-4 sm:mt-12 md:grid-cols-2">
           <a className="pixel-button px-6 py-5" href={spotifyUrl} target="_blank" rel="noreferrer">
             Spotify
           </a>

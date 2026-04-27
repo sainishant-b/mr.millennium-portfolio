@@ -18,7 +18,7 @@ const spotifyUrl = "https://open.spotify.com/artist/6KB8jy3ACCfQn1BOR90Stq";
 
 function ContactPage() {
   return (
-    <main className="scanline-mask relative min-h-screen overflow-hidden bg-background px-5 py-6 text-foreground sm:px-8">
+    <main className="scanline-mask relative min-h-screen overflow-hidden bg-background px-4 py-5 text-foreground sm:px-8 sm:py-6">
       <GridScanBackground />
       <nav className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between py-2">
         <Link to="/" className="font-display text-xs text-accent">
@@ -29,17 +29,17 @@ function ContactPage() {
         </Link>
       </nav>
 
-      <section className="relative z-10 mx-auto grid w-full max-w-6xl gap-10 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <section className="relative z-10 mx-auto grid w-full max-w-6xl gap-8 py-12 sm:gap-10 sm:py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
           <p className="mb-5 font-display text-[0.65rem] text-accent">BOOKING LINE OPEN</p>
-          <h1 className="pixel-title text-4xl leading-[1.3] sm:text-6xl">MR. MILLENNIUM / BOOKINGS</h1>
-          <p className="mt-8 max-w-xl text-lg leading-8 text-muted-foreground">
+          <h1 className="pixel-title text-[1.75rem] leading-[1.45] sm:text-6xl sm:leading-[1.3]">MR. MILLENNIUM / BOOKINGS</h1>
+          <p className="mt-6 max-w-xl text-[0.95rem] leading-7 text-muted-foreground sm:mt-8 sm:text-lg sm:leading-8">
             Available for clubs, festivals, private parties, brand launches, and custom live visual sets.
           </p>
         </div>
 
-        <div className="pixel-panel p-6 sm:p-8">
-          <div className="space-y-5">
+        <div className="pixel-panel p-4 sm:p-8">
+          <div className="space-y-4 sm:space-y-5">
             <a className="pixel-button w-full px-6 py-5" href="mailto:booking@mrmillennium.com">
               booking@mrmillennium.com
             </a>
@@ -50,9 +50,9 @@ function ContactPage() {
               Instagram
             </a>
           </div>
-          <div className="mt-8 grid grid-cols-8 gap-1" aria-hidden="true">
+          <div className="mt-6 grid grid-cols-8 gap-1 sm:mt-8" aria-hidden="true">
             {Array.from({ length: 64 }).map((_, index) => (
-              <span key={index} className={index % 5 === 0 || index % 7 === 0 ? "h-4 bg-accent" : "h-4 bg-muted"} />
+              <span key={index} className={index % 5 === 0 || index % 7 === 0 ? "h-3 bg-accent sm:h-4" : "h-3 bg-muted sm:h-4"} />
             ))}
           </div>
         </div>
