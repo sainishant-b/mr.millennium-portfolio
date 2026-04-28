@@ -226,7 +226,7 @@
 
 @media (max-width: 640px) {
   :root {
-    --shadow-pixel: 4px 4px 0 oklch(0.05 0.03 302), 7px 7px 0 oklch(0.45 0.19 28.5 / 60%);
+    --shadow-pixel: 4px 4px 0 oklch(0.04 0.004 255), 7px 7px 0 oklch(0.45 0.19 28.5 / 60%);
   }
 
   .pixel-button {
@@ -240,11 +240,11 @@
 
   .pixel-button:hover {
     transform: none;
-    box-shadow: 5px 5px 0 oklch(0.05 0.03 302);
+    box-shadow: 5px 5px 0 oklch(0.04 0.004 255);
   }
 
   .pixel-title {
-    text-shadow: 3px 3px 0 var(--color-accent), 5px 5px 0 oklch(0.05 0.03 302);
+    text-shadow: 3px 3px 0 var(--color-accent), 5px 5px 0 oklch(0.04 0.004 255);
   }
 
   .scanline-mask::after {
