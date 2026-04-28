@@ -260,10 +260,10 @@ export function ParticleTextEffect({
             particle.pos.x = randomPos.x
             particle.pos.y = randomPos.y
 
-            particle.maxSpeed = Math.random() * 6 + 4
-            particle.maxForce = particle.maxSpeed * 0.05
+            particle.maxSpeed = Math.random() * 8 + 8
+            particle.maxForce = particle.maxSpeed * 0.08
             particle.particleSize = Math.random() * 6 + 6
-            particle.colorBlendRate = Math.random() * 0.0275 + 0.0025
+            particle.colorBlendRate = Math.random() * 0.04 + 0.008
 
             particles.push(particle)
           }
@@ -320,52 +320,116 @@ export function ParticleTextEffect({
     canvas.width = dimensions.width
     canvas.height = dimensions.height
 
-    // Wait for font to load before rendering
-    document.fonts.ready.then(() => {
-      nextWord(words[0], canvas)
-    })
+    // Render immediately (fallback font if custom isn't ready yet)
+    nextWord(words[0], canvas)
+
+    // Re-render once the custom font loads for crisp text
+    if (!document.fonts.check('12px "Press Start 2P"')) {
+      document.fonts.ready.then(() => {
+        nextWord(words[wordIndexRef.current], canvas)
+      })
+    }
 
     const animate = () => {
       const ctx = canvas.getContext("2d")!
       const particles = particlesRef.current
 
+      const isSingleWord = words.length === 1;
+      const turnWhiteFrame = 120;
+      const solidTextFrame = 160;
+      const transitionDuration = 60;
+
+      if (isSingleWord && frameCountRef.current === turnWhiteFrame) {
+        particles.forEach(p => {
+          const currentColor = {
+            r: Math.round(p.startColor.r + (p.targetColor.r - p.startColor.r) * p.colorWeight),
+            g: Math.round(p.startColor.g + (p.targetColor.g - p.startColor.g) * p.colorWeight),
+            b: Math.round(p.startColor.b + (p.targetColor.b - p.startColor.b) * p.colorWeight),
+          };
+          p.startColor = currentColor;
+          p.targetColor = { r: 255, g: 255, b: 255 }; // White
+          p.colorWeight = 0;
+          p.colorBlendRate = 0.03; 
+        });
+      }
+
+      let solidOpacity = 0;
+      let particleGlobalAlpha = 1;
+
+      if (isSingleWord && frameCountRef.current > solidTextFrame) {
+        solidOpacity = Math.min(1, (frameCountRef.current - solidTextFrame) / transitionDuration);
+        particleGlobalAlpha = 1 - solidOpacity;
+      }
+
       // Clear with semi-transparent background for motion-blur trail
-      // Use a near-black matching the theme background
-      ctx.fillStyle = "rgba(20, 20, 26, 0.1)"
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      if (particleGlobalAlpha <= 0) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      } else {
+        ctx.fillStyle = "rgba(20, 20, 26, 0.1)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
 
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const particle = particles[i]
-        particle.move()
-        particle.draw(ctx, drawAsPoints)
+      if (particleGlobalAlpha > 0) {
+        ctx.globalAlpha = particleGlobalAlpha;
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const particle = particles[i];
+          particle.move();
+          particle.draw(ctx, drawAsPoints);
 
-        if (particle.isKilled) {
-          if (
-            particle.pos.x < 0 ||
-            particle.pos.x > canvas.width ||
-            particle.pos.y < 0 ||
-            particle.pos.y > canvas.height
-          ) {
-            particles.splice(i, 1)
+          if (particle.isKilled) {
+            if (
+              particle.pos.x < 0 ||
+              particle.pos.x > canvas.width ||
+              particle.pos.y < 0 ||
+              particle.pos.y > canvas.height
+            ) {
+              particles.splice(i, 1);
+            }
           }
         }
+        ctx.globalAlpha = 1;
       }
 
       // Mouse interaction
-      if (mouseRef.current.isPressed && mouseRef.current.isRightClick) {
+      if (mouseRef.current.isPressed && mouseRef.current.isRightClick && particleGlobalAlpha > 0) {
         particles.forEach((particle) => {
           const distance = Math.sqrt(
             Math.pow(particle.pos.x - mouseRef.current.x, 2) +
               Math.pow(particle.pos.y - mouseRef.current.y, 2)
-          )
+          );
           if (distance < 50) {
-            particle.kill(canvas.width, canvas.height)
+            particle.kill(canvas.width, canvas.height);
           }
-        })
+        });
+      }
+
+      if (solidOpacity > 0) {
+        const isMobile = canvas.width < 768;
+        const dynamicFontSize = isMobile ? Math.floor(canvas.width / 12) : 72;
+        const dynamicFont = `bold ${dynamicFontSize}px "Press Start 2P", monospace`;
+
+        ctx.font = dynamicFont;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        const shadowRedOffset = isMobile ? 3 : 4;
+        const shadowBlackOffset = isMobile ? 5 : 7;
+
+        // Black shadow (oklch(0.04 0.004 255) is roughly rgb(10,10,13))
+        ctx.fillStyle = `rgba(10, 10, 13, ${solidOpacity})`;
+        ctx.fillText(words[0], canvas.width / 2 + shadowBlackOffset, canvas.height / 2 + shadowBlackOffset);
+
+        // Red accent shadow
+        ctx.fillStyle = `rgba(${particleColor.r}, ${particleColor.g}, ${particleColor.b}, ${solidOpacity})`;
+        ctx.fillText(words[0], canvas.width / 2 + shadowRedOffset, canvas.height / 2 + shadowRedOffset);
+
+        // Main white text
+        ctx.fillStyle = `rgba(255, 255, 255, ${solidOpacity})`;
+        ctx.fillText(words[0], canvas.width / 2, canvas.height / 2);
       }
 
       // Auto-advance words
-      frameCountRef.current++
+      frameCountRef.current++;
       if (frameCountRef.current % 240 === 0 && words.length > 1) {
         wordIndexRef.current = (wordIndexRef.current + 1) % words.length
         nextWord(words[wordIndexRef.current], canvas)
