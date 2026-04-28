@@ -6,7 +6,7 @@ export function GridScanBackground() {
       <GridScan
         sensitivity={0.55}
         lineThickness={1.4}
-        linesColor="#6B607A"
+        linesColor="#5B6068"
         scanColor="#B70E0F"
         scanOpacity={0.75}
         gridScale={0.1}
