@@ -1,5 +1,4 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { GridScanBackground } from "../components/GridScanBackground";
 
 export const Route = createFileRoute("/work")({
   head: () => ({
@@ -25,7 +24,6 @@ const spotifyUrl = "https://open.spotify.com/artist/6KB8jy3ACCfQn1BOR90Stq";
 function WorkPage() {
   return (
     <main className="scanline-mask relative min-h-screen overflow-hidden bg-background px-4 py-5 text-foreground sm:px-8 sm:py-6">
-      <GridScanBackground />
       <nav className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between py-2">
         <Link to="/" className="font-display text-xs text-accent">
           MR.MILLENNIUM
