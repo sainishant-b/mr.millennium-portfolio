@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { GridScanBackground } from "../components/GridScanBackground";
 import TetrisLoading from "../components/ui/tetris-loader";
-import djPortrait from "../assets/dj-ascii-art.png";
 import photo1 from "../assets/photo1.jpg";
 import photo2 from "../assets/photo2.jpg";
 import photo3 from "../assets/photo3.jpg";
@@ -72,15 +71,14 @@ function Index() {
         </div>
       </nav>
 
-      <section className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-8 px-4 pb-12 pt-4 sm:min-h-[calc(100vh-5rem)] sm:px-8 sm:pb-16 lg:grid-cols-[1fr_0.82fr]">
-        <div className="space-y-6 sm:space-y-8">
+      <section className="relative z-10 mx-auto flex w-full max-w-6xl items-center px-4 pb-12 pt-4 sm:min-h-[calc(100vh-5rem)] sm:px-8 sm:pb-16">
+        <div className="max-w-5xl space-y-6 sm:space-y-8">
           <div className="inline-flex border border-border bg-muted px-3 py-2 font-display text-[0.58rem] text-muted-foreground">
             SIGNAL LIVE // PRESS PLAY
           </div>
           <div className="space-y-5">
-            <h1 className="pixel-title max-w-4xl text-[2rem] leading-[1.32] sm:text-6xl lg:text-7xl">
-              MR.
-              <br /> MILLENNIUM
+            <h1 className="pixel-title max-w-full whitespace-nowrap text-[1.9rem] leading-[1.2] sm:text-6xl lg:text-7xl">
+              MR. MILLENNIUM
             </h1>
             <p className="max-w-2xl text-[0.95rem] leading-7 text-muted-foreground sm:text-lg sm:leading-8">
               Bass-heavy club sets, glitch visuals, and future-retro edits built for sweaty late-night rooms.
@@ -94,18 +92,6 @@ function Index() {
             <Link to="/contact" className="pixel-button secondary px-6 py-4">
               Book Mr. Millennium
             </Link>
-          </div>
-
-        </div>
-
-        <div className="pixel-panel relative mx-auto w-full max-w-[19rem] overflow-hidden p-2 sm:max-w-md sm:p-3">
-          <img
-            src={djPortrait}
-            alt="Purple 8-bit styled DJ portrait"
-            className="aspect-[4/5] w-full object-cover grayscale-[20%] contrast-125 sm:aspect-[3/4]"
-          />
-          <div className="absolute left-4 top-4 bg-accent px-2 py-1.5 font-display text-[0.48rem] text-accent-foreground sm:left-6 sm:top-6 sm:px-3 sm:py-2 sm:text-[0.55rem]">
-            MR. MILLENNIUM
           </div>
         </div>
       </section>
