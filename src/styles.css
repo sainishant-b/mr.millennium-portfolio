@@ -209,8 +209,10 @@
     position: fixed;
     inset: 0;
     z-index: 50;
-    background: repeating-linear-gradient(0deg, transparent 0 3px, oklch(1 0 0 / 5%) 3px 4px);
-    mix-blend-mode: overlay;
+    background: repeating-linear-gradient(0deg, transparent 0 3px, oklch(1 0 0 / 4%) 3px 4px);
+    opacity: 0.6;
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   .sound-bars span {
@@ -509,4 +511,18 @@
     scroll-behavior: auto !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
 }

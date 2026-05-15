@@ -469,10 +469,28 @@ export function ParticleTextEffect({
     canvas.addEventListener("mousemove", handleMouseMove)
     canvas.addEventListener("contextmenu", handleContextMenu)
 
+    let isVisible = true
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        const wasVisible = isVisible
+        isVisible = entry.isIntersecting
+        if (isVisible && !wasVisible) {
+          if (animationRef.current) cancelAnimationFrame(animationRef.current)
+          animate()
+        } else if (!isVisible && wasVisible && animationRef.current) {
+          cancelAnimationFrame(animationRef.current)
+          animationRef.current = undefined
+        }
+      },
+      { rootMargin: "100px" }
+    )
+    io.observe(canvas)
+
     return () => {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
       }
+      io.disconnect()
       canvas.removeEventListener("mousedown", handleMouseDown)
       canvas.removeEventListener("mouseup", handleMouseUp)
       canvas.removeEventListener("mousemove", handleMouseMove)

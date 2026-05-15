@@ -109,9 +109,9 @@ function PlayPage() {
             </p>
             <button
               onClick={() => setPhase("playing")}
-              className="pixel-button px-10 py-5 text-sm sm:text-base"
+              className="pixel-button px-10 py-5 text-sm sm:text-base shadow-[5px_5px_0_oklch(0.04_0.004_255),0_0_28px_oklch(0.45_0.19_28.5/55%)] hover:shadow-[8px_8px_0_oklch(0.04_0.004_255),0_0_40px_oklch(0.45_0.19_28.5/70%)]"
             >
-              START GAME
+              PRESS START
             </button>
           </div>
         </div>
