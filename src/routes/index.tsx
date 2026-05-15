@@ -8,7 +8,7 @@ import photo3 from "../assets/photo3.webp";
 import photo4 from "../assets/photo4.webp";
 import photo5 from "../assets/photo5.webp";
 import photo6 from "../assets/photo6.webp";
-import asciiGif from "../assets/ascii-art.gif";
+import asciiVideo from "../assets/ascii-art.mp4";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -109,9 +109,12 @@ function Index() {
               className={`absolute inset-0 z-0 pointer-events-none transition-opacity duration-1000 ${showHeroGif ? "opacity-40" : "opacity-0"}`}
               aria-hidden="true"
             >
-              <img
-                src={asciiGif}
-                alt=""
+              <video
+                src={asciiVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-full object-cover"
               />
             </div>
