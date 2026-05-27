@@ -31,14 +31,10 @@ export const Route = createFileRoute("/")({
 const gallery = [photo1, photo2, photo3, photo4, photo5, photo6];
 
 const marqueeItems = [
+  "HOUSE HEAD",
   "BASS HEAVY",
-  "GLITCH VISUALS",
-  "WAREHOUSE READY",
-  "FUTURE RETRO",
-  "140 BPM",
-  "LATE NIGHT",
-  "CLUB EDITS",
-  "BOOK NOW",
+  "GROOVY RHYTHMS",
+  "INDIAN INSPIRED",
 ];
 
 const SPOTIFY_ARTIST_ID = "6KB8jy3ACCfQn1BOR90Stq";
@@ -96,7 +92,7 @@ function Index() {
             onClick={() => setAppState("main")}
             className="pixel-button px-10 py-6 text-lg sm:text-xl shadow-[5px_5px_0_oklch(0.04_0.004_255),0_0_28px_oklch(0.45_0.19_28.5/55%)] hover:shadow-[8px_8px_0_oklch(0.04_0.004_255),0_0_40px_oklch(0.45_0.19_28.5/70%)]"
           >
-            PRESS START
+            PRESS PLAY ▶
           </button>
         </div>
       )}
@@ -141,12 +137,6 @@ function Index() {
             </nav>
 
             <section className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col justify-between px-4 pb-12 pt-4 sm:px-8 sm:pb-16 pointer-events-none">
-              <div className="w-full">
-                <Link to="/play" className="inline-flex border border-accent/60 bg-muted px-3 py-2 font-display text-[0.58rem] text-muted-foreground pointer-events-auto transition-all duration-300 hover:border-accent hover:text-accent hover:shadow-[0_0_16px_oklch(0.45_0.19_28.5/40%)] cursor-pointer group">
-                  SIGNAL LIVE //<span className="ml-1 group-hover:animate-pulse"> PRESS PLAY ▶</span>
-                </Link>
-              </div>
-
               <div className="w-full space-y-6 sm:space-y-8 mt-auto pointer-events-auto">
                 <p className="max-w-2xl text-[0.95rem] leading-7 text-muted-foreground sm:text-lg sm:leading-8">
                   Bass-heavy club sets, glitch visuals, and future-retro edits built for sweaty late-night rooms.
@@ -159,6 +149,9 @@ function Index() {
                   <Link to="/contact" className="pixel-button secondary px-6 py-4">
                     Book Mr. Millennium
                   </Link>
+                  <Link to="/play" className="pixel-button secondary px-6 py-4">
+                    Press Play ▶
+                  </Link>
                 </div>
               </div>
             </section>
@@ -168,11 +161,11 @@ function Index() {
             aria-label="ticker"
             className="relative z-10 w-full overflow-hidden border-y border-accent/40 bg-muted/40 py-3 pointer-events-auto"
           >
-            <div className="marquee-track flex w-max gap-10 whitespace-nowrap font-display text-[0.7rem] text-accent sm:text-sm">
-              {[...marqueeItems, ...marqueeItems].map((item, i) => (
-                <span key={i} className="flex items-center gap-10">
+            <div className="flex w-max animate-marquee gap-12 whitespace-nowrap font-display text-[0.7rem] text-accent sm:text-sm">
+              {[...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
+                <span key={i} className="flex items-center gap-12">
                   <span>{item}</span>
-                  <span className="text-muted-foreground">//</span>
+                  <span className="text-muted-foreground">✦</span>
                 </span>
               ))}
             </div>
