@@ -55,7 +55,7 @@ function WorkPage() {
           <h1 className="pixel-title max-w-4xl text-[1.75rem] leading-[1.45] sm:text-6xl sm:leading-[1.3]">
             MR. MILLENNIUM
             <br />
-            <span className="text-accent">/ MIXES / VISUALS</span>
+            <span className="text-accent">/ MIXES</span>
           </h1>
           <div className="mt-8 grid gap-5 sm:mt-12 lg:grid-cols-2">
             {mixes.map((mix) => (
