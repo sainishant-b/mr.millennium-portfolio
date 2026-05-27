@@ -81,6 +81,31 @@ function WorkPage() {
           </div>
         </div>
 
+        {/* Notable Venues */}
+        <div>
+          <p className="mb-4 font-display text-[0.65rem] text-accent">PLAYED AT</p>
+          <h2 className="pixel-title mb-8 text-2xl sm:text-4xl">NOTABLE VENUES</h2>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+            {[
+              "Breakaway Music Festival",
+              "Drift Music Festival",
+              "Green Light Social Dallas",
+              "Vice Park",
+              "Texas Live",
+              "Green Elephant",
+            ].map((venue) => (
+              <div key={venue} className="pixel-panel p-5 sm:p-7 flex items-center gap-4 transition hover:-translate-y-1 hover:shadow-red">
+                <span className="text-accent font-display text-xs shrink-0">▶</span>
+                <span className="font-display text-xs sm:text-sm leading-7">{venue}</span>
+              </div>
+            ))}
+            <div className="pixel-panel p-5 sm:p-7 flex items-center gap-4 border-dashed opacity-60">
+              <span className="text-accent font-display text-xs shrink-0">+</span>
+              <span className="font-display text-xs sm:text-sm leading-7 text-muted-foreground">And many more...</span>
+            </div>
+          </div>
+        </div>
+
         {/* Spotify */}
         <div>
           <p className="mb-4 font-display text-[0.65rem] text-accent">LISTEN</p>
