@@ -146,10 +146,10 @@ function Index() {
                   <Link to="/work" className="pixel-button px-6 py-4">
                     View Work
                   </Link>
-                  <Link to="/contact" className="pixel-button secondary px-6 py-4">
+                  <Link to="/contact" className="pixel-button px-6 py-4">
                     Book Mr. Millennium
                   </Link>
-                  <Link to="/play" className="pixel-button secondary px-6 py-4">
+                  <Link to="/play" className="pixel-button px-6 py-4">
                     Press Play ▶
                   </Link>
                 </div>
@@ -168,6 +168,19 @@ function Index() {
                   <span className="text-muted-foreground">✦</span>
                 </span>
               ))}
+            </div>
+          </section>
+
+          <section className="relative z-10 mx-auto w-full max-w-6xl px-4 py-12 sm:px-8 sm:py-16 pointer-events-auto">
+            <p className="mb-4 font-display text-[0.65rem] text-accent">ABOUT</p>
+            <h2 className="pixel-title mb-8 text-2xl sm:text-4xl">MR. MILLENNIUM</h2>
+            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
+              <p className="text-[0.95rem] leading-8 text-muted-foreground sm:text-lg sm:leading-9">
+                Mr. Millennium is an electronic music producer and DJ from Dallas whose sound thrives at the intersection of energy and culture. Specializing in bass and tech house, he fuels dance floors with heavy grooves, grimy drops, and feel-good rhythms. Beyond house, he loves to experiment across EDM genres like trap, dubstep, and techno, constantly pushing creative boundaries.
+              </p>
+              <p className="text-[0.95rem] leading-8 text-muted-foreground sm:text-lg sm:leading-9">
+                Drawing inspiration from his Indian heritage, Mr. Millennium weaves traditional melodies and sounds into modern electronic production, crafting a fusion that's both global and deeply personal. His mission is simple — to make people dance, excite their souls, and bring them together through the universal language of music.
+              </p>
             </div>
           </section>
 

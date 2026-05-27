@@ -20,9 +20,9 @@ const youtubeUrl = "https://youtube.com/@faceofmillennium";
 const links = [
   { label: "faceofmillenium@gmail.com", href: "mailto:faceofmillenium@gmail.com", variant: "primary" },
   { label: "Spotify",     href: spotifyUrl,     variant: "secondary" },
-  { label: "SoundCloud",  href: soundcloudUrl,  variant: "secondary" },
+  { label: "SoundCloud",  href: soundcloudUrl,  variant: "primary" },
   { label: "YouTube",     href: youtubeUrl,     variant: "secondary" },
-  { label: "Instagram",   href: instagramUrl,   variant: "secondary" },
+  { label: "Instagram",   href: instagramUrl,   variant: "primary" },
 ] as const;
 
 function ContactPage() {
